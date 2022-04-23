@@ -79,12 +79,12 @@ function init() {
     gameOver = false;
     questionIndex = 0;
   
-    startClock();
+    startTimer();
     startQuestion();
   }
 
   // score timer
-  function startClock() {
+  function startTimer() {
     score = 75;
     timerEL.textContent = score;
     var timerInterval = setInterval(function() {
@@ -102,5 +102,33 @@ function init() {
         timerEL.textContent = score;
       }
     }, 1000);
+  }
+  
+  function startQuestion() {
+    answersEl.innerHTML = "";
+    questionEl.textContent = questionArray[questionIndex].question;
+    var answerArray = genererateAnswerArray(questionArray[questionIndex]);
+    for (var i = 0; i < answerArray.length; i++) {
+      var answerButton = document.createElement("button");
+      answerButton.textContent = answerArray[i];
+      answerButton.classList.add("btn", "btn-primary");
+      answersEl.appendChild(answerButton);
+    }
+  }
+  
+  function genererateAnswerArray(question) {
+    var answerArray = [];
+    answerArray.push(
+      question.answer1,
+      question.answer2,
+      question.answer3,
+      question.rightAnswer
+    );
+    shuffle(answerArray);
+    return answerArray;
+  }
+  
+  function shuffle(array) {
+    array.sort(() => Math.random() - 0.5);
   }
   
