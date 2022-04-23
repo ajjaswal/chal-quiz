@@ -168,3 +168,35 @@ function init() {
       }
     }
   }
+
+  function submitScore(event) {
+    event.preventDefault();
+    var newScore = {
+      initials: "",
+      yourScore: ""
+    };
+    newScore.initials = initialsEl.value.toUpperCase();
+    newScore.yourScore = score;
+    highscoreArray.push(newScore);
+    localStorage.setItem("highscores", JSON.stringify(highscoreArray));
+    viewHighscores();
+    showHighscores();
+  }
+  
+  function showHighscores() {
+    highscoresEL.innerHTML = "";
+    highscoreArray.sort(compare);
+    for (var i = 0; i < highscoreArray.length; i++) {
+      var insertedScore = document.createElement("li");
+      insertedScore.classList.add("list-group-item", "list-group-item-primary");
+      insertedScore.textContent =
+        i +
+        1 +
+        ". " +
+        highscoreArray[i].initials +
+        ": " +
+        highscoreArray[i].yourScore;
+      highscoresEL.appendChild(insertedScore);
+    }
+    highscoreButton.disabled = true;
+  }
