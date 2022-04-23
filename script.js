@@ -82,3 +82,25 @@ function init() {
     startClock();
     startQuestion();
   }
+
+  // score timer
+  function startClock() {
+    score = 75;
+    timerEL.textContent = score;
+    var timerInterval = setInterval(function() {
+      if (gameOver) {
+        clearInterval(timerInterval);
+      }else if(score <= 0){
+        gameOver = true;
+        clearInterval(timerInterval);
+        correctnessEl.textContent = "TIME UP!";
+        scoreEl.textContent = score;
+        setTimeout(function(){questionPage.classList.add("d-none");
+        scorePage.classList.remove("d-none");},1002)
+      } else {
+        score--;
+        timerEL.textContent = score;
+      }
+    }, 1000);
+  }
+  
