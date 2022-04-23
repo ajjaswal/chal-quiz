@@ -200,3 +200,32 @@ function init() {
     }
     highscoreButton.disabled = true;
   }
+
+  function compare(a, b) {
+    return b.yourScore - a.yourScore;
+  }
+  
+  function back(event) {
+    highscorePage.classList.add("d-none");
+    homePage.classList.remove("d-none");
+    highscoreButton.disabled = false;
+  }
+  
+  function clearScores() {
+    highscoreArray = [];
+    localStorage.setItem("highscores", JSON.stringify(highscoreArray));
+    highscoresEL.innerHTML = "";
+  }
+  
+  function testFunction(event) {
+    console.log("test");
+  }
+  
+  highscoreButton.addEventListener("click", viewHighscores);
+  startButton.addEventListener("click", startQuiz);
+  backButton.addEventListener("click", back);
+  answersEl.addEventListener("click", checkAnswer);
+  submitButton.addEventListener("click", submitScore);
+  clearButton.addEventListener("click", clearScores);
+  
+  init();
