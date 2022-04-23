@@ -62,3 +62,23 @@ function init() {
       console.log("block 2");
     }
   }
+
+  //page buttons
+  function viewHighscores() {
+    gameOver = true;
+    homePage.classList.add("d-none");
+    questionPage.classList.add("d-none");
+    scorePage.classList.add("d-none");
+    highscorePage.classList.remove("d-none");
+    showHighscores();
+  }
+  
+  function startQuiz() {
+    homePage.classList.add("d-none");
+    questionPage.classList.remove("d-none");
+    gameOver = false;
+    questionIndex = 0;
+  
+    startClock();
+    startQuestion();
+  }
