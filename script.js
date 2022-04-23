@@ -132,3 +132,39 @@ function init() {
     array.sort(() => Math.random() - 0.5);
   }
   
+  function checkAnswer(event) {
+    if (event.target.matches("button")) {
+      if (event.target.textContent === questionArray[questionIndex].rightAnswer) {
+        correctnessEl.textContent = "CORRECT";
+        setTimeout(function() {
+          correctnessEl.textContent = "";
+        }, 1200);
+      } else {
+        if(score >= 15){
+        score -= 15;
+        }else{
+          score = 0;
+          setTimeout(function() {
+            questionPage.classList.add("d-none");
+            scorePage.classList.remove("d-none");
+          }, 1002);
+        }
+        timerEL.textContent = score;
+        correctnessEl.textContent = "WRONG";
+        setTimeout(function() {
+          correctnessEl.textContent = "";
+        }, 1000);
+      }
+      if (questionIndex < questionArray.length - 1) {
+        questionIndex++;
+        startQuestion();
+      } else {
+        gameOver = true;
+        setTimeout(function() {
+          questionPage.classList.add("d-none");
+          scorePage.classList.remove("d-none");
+        }, 1002);
+        scoreEl.textContent = score;
+      }
+    }
+  }
