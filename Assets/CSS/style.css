@@ -16,3 +16,10 @@
     padding: 10px;
     width: 50%;
 }
+
+#question {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 10px;
+}
