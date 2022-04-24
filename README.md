@@ -13,4 +13,4 @@
 
 # Screenshot
 
-![Screenshot 2022-04-23 180147](https://user-images.githubusercontent.com/102101481/164947382-aaf85272-811b-499e-9d83-0b201f782db1.png)
+![codequizss](https://user-images.githubusercontent.com/102101481/164951811-d6ae8740-d9d0-4afd-915f-0d74d2ca4bcc.png)
